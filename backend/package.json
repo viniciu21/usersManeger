@@ -18,6 +18,20 @@
   },
   "homepage": "https://github.com/viniciu21/usersManeger#readme",
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^8.3.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "sequelize-cli": "^6.2.0"
   }
 }
