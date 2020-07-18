@@ -7,4 +7,4 @@ const connection = require('./database/index');
 app.use(express.json());
 app.use(routes);
 
-app.listen(3001);
+app.listen(3333);
