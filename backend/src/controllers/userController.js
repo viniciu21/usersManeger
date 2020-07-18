@@ -73,10 +73,10 @@ module.exports = {
     try {
       const { id } = req.body;
 
+      const deletedUser = await User.findOne({ where: { id: id } });
       const deleted = await User.destroy({ where: { id: id } });
 
       if (deleted) {
-        const deletedUser = await User.findOne({ where: { id: id } });
         return resp.status(200).json(deletedUser);
       }
 

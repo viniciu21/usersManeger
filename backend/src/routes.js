@@ -9,4 +9,6 @@ routes.get('/users/id', userController.searchIndex);
 
 routes.put('/users', userController.updateUser);
 
+routes.delete('/users', userController.deleteUser);
+
 module.exports = routes;
