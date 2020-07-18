@@ -1,5 +1,4 @@
 const User = require('../models/user');
-const { update } = require('../models/user');
 
 module.exports = {
   async searchAll(req, resp) {
@@ -21,6 +20,8 @@ module.exports = {
       const userDuplication = await User.findOne({ where: { email } });
 
       if (userDuplication) throw new Error('User already exists');
+
+      if (name === '' || email === '' || password === '') throw new Error('Please fill in all the data');
 
       const user = await User.create({
         name,
@@ -50,7 +51,9 @@ module.exports = {
 
   async updateUser(req, resp) {
     try {
-      const { id } = req.body;
+      const { id, name, email, password } = req.body;
+
+      if (name === '' || email === '' || password === '') throw new Error('Please fill in all the data');
 
       const [updated] = await User.update(req.body, { where: { id: id } });
 
