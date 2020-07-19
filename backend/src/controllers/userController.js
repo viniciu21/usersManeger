@@ -21,7 +21,8 @@ module.exports = {
 
       if (userDuplication) throw new Error('Usuário já existe');
 
-      if (name === '' || email === '' || password === '') throw new Error('Porfavor, preencha todos os campos');
+      if (name === '' || email === '' || password === '')
+        throw new Error('Porfavor, preencha todos os campos');
 
       const user = await User.create({
         name,
@@ -53,7 +54,8 @@ module.exports = {
     try {
       const { id, name, email, password } = req.body;
 
-      if (name === '' || email === '' || password === '') throw new Error('Porfavor, preencha todos os campos');
+      if (name === '' || email === '' || password === '')
+        throw new Error('Porfavor, preencha todos os campos');
 
       const [updated] = await User.update(req.body, { where: { id: id } });
 

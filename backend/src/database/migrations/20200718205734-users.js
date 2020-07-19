@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Table of users 
+ * Table of users
  */
 
 module.exports = {
