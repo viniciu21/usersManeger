@@ -5,9 +5,9 @@ module.exports = {
     try {
       const user = await User.findAll();
 
-      if (!user) throw new Error('Something went wrong');
+      if (!user) throw new Error('Algo ocorreu errado');
 
-      return resp.json(user);
+      return resp.status(200).json(user);
     } catch (e) {
       return resp.status(400).json(e.message);
     }
@@ -19,9 +19,9 @@ module.exports = {
 
       const userDuplication = await User.findOne({ where: { email } });
 
-      if (userDuplication) throw new Error('User already exists');
+      if (userDuplication) throw new Error('Usuário já existe');
 
-      if (name === '' || email === '' || password === '') throw new Error('Please fill in all the data');
+      if (name === '' || email === '' || password === '') throw new Error('Porfavor, preencha todos os campos');
 
       const user = await User.create({
         name,
@@ -35,13 +35,13 @@ module.exports = {
     }
   },
 
-  async searchIndex(req, resp) {
+  async searchByIndex(req, resp) {
     try {
       const { id } = req.body;
 
       const user = await User.findByPk(id);
 
-      if (!user) throw new Error('This user does not exist');
+      if (!user) throw new Error('Este usuário não existe');
 
       return resp.json(user);
     } catch (e) {
@@ -53,7 +53,7 @@ module.exports = {
     try {
       const { id, name, email, password } = req.body;
 
-      if (name === '' || email === '' || password === '') throw new Error('Please fill in all the data');
+      if (name === '' || email === '' || password === '') throw new Error('Porfavor, preencha todos os campos');
 
       const [updated] = await User.update(req.body, { where: { id: id } });
 
@@ -63,7 +63,7 @@ module.exports = {
         return resp.status(200).json(updatedUser);
       }
 
-      throw new Error('This user not exist');
+      throw new Error('Este usuário não existe');
     } catch (e) {
       resp.status(400).json(e.message);
     }
@@ -80,7 +80,7 @@ module.exports = {
         return resp.status(200).json(deletedUser);
       }
 
-      throw new Error('Something went wrong, try again');
+      throw new Error('Algo ocorreu errado, tente novamente');
     } catch (e) {
       resp.status(400).json(e.message);
     }

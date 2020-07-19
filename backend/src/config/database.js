@@ -1,14 +1,10 @@
 module.exports = {
-  dialect: 'postgres', //your type of database
-  host: 'localhost', //your host
-  username: 'postgres', //standart name for database postgree
-  password: 'abc987abc', //insert your databese password,
-  database: 'usersManege', // this one will be the name of your database
+  dialect: process.env.DB_DIALETC, //your type of database
+  host: process.env.DB_HOST, //your host
+  username: process.env.DB_USERNAME, //standart name for database postgree
+  password: process.env.DB_PASSWORD, //insert your databese password,
+  database: 'usersManege',
   define: {
     timestamps: true,
-    /*
-     * this will create for the tables two columns that will be named by
-     * createdAt and updatedAt that will contain the date that were created
-     */
   },
 };
