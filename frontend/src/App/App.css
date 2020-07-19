@@ -1,3 +1,5 @@
+@import url('../../node_modules/react-toastify/dist/ReactToastify.css');
+
 :root {
   --bg-dark: #1A2F3A;
   --logo-height: 100px;
@@ -14,7 +16,7 @@
   font-family: sans-serif;
 }
 
-.app {
+.App {
   margin: 0px;
   display: grid;
   grid-template-columns: var(--aside-width) 1fr;
