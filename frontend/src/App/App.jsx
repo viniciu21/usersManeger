@@ -21,7 +21,7 @@ function App() {
         <Nav />
         <Routes />
         <Footer />
-        <ToastContainer />
+        <ToastContainer autoClose={3000} />
       </div>
     </HashRouter>
   );
