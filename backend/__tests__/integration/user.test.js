@@ -63,18 +63,35 @@ describe('User', () => {
 
   it('It should be possible to change an existing user', async () => {
     const user = await factory.attrs('User');
-    const userUpdated = await factory.attrs('User');
 
     const userSaved = await request(app).post('/users').send(user);
 
     const response = await request(app).put('/users').send({
       id: userSaved.body.id,
-      userUpdated,
+      name: 'qualquercoisa',
+      email: 'qualquercoisa@hotmail.com',
+      password: '1234566788',
     });
 
-    const isChanged = response.body.name === userUpdated.name;
+    const isChanged = response.body.name !== user.name;
 
     expect(isChanged).toBe(true);
+  });
+
+  it('It should not be possible to change a user with an existing email', async () => {
+    const user1 = factory.attrs('User');
+    const user2 = factory.attrs('User');
+
+    const userSaved1 = await request(app).post('/users').send(user1);
+    const userSaved2 = await request(app).post('/users').send(user2);
+
+    const response = await request(app).put('/users').send({
+      id: userSaved1.body.id,
+      email: userSaved2.body.email,
+      userSaved2,
+    });
+
+    expect(response.status).toBe(400);
   });
 
   it('It should not be possible to change a user non-existent', async () => {
