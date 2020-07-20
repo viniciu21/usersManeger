@@ -47,8 +47,8 @@ function UserCrud() {
       setUser(initialUser);
       setUsersList(newList);
       toast.success(
-        `Novo usuário ${
-          method === 'put' ? 'alterado' : 'registrado'
+        `${
+          method === 'put' ? 'Usuário alterado' : 'Novo usuário registrado'
         } com sucesso`
       );
     } catch (e) {
