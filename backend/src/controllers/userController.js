@@ -63,6 +63,10 @@ module.exports = {
       if (name === '' || email === '' || password === '')
         throw new Error('Porfavor, preencha todos os campos');
 
+      const isDuplicateEmail = await User.findOne({ where: { email } });
+
+      if (isDuplicateEmail) throw new Error('Usuário já existe');
+
       const [updated] = await User.update(req.body, { where: { id: id } });
 
       if (updated) {
