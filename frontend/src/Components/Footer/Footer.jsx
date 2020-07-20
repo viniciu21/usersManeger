@@ -9,7 +9,6 @@ function Footer() {
         <strong>
           <span className="text-info"> Vinicius Oliveira da Silva</span>
         </strong>
-        .
       </span>
     </footer>
   );
