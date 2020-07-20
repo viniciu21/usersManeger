@@ -80,15 +80,19 @@ describe('User', () => {
 
   it('It should not be possible to change a user with an existing email', async () => {
     const user1 = factory.attrs('User');
-    const user2 = factory.attrs('User');
+    const user2 = {
+      name: 'aleatorio',
+      email: 'aleatorio',
+      password: 'aleatorio',
+    }
 
     const userSaved1 = await request(app).post('/users').send(user1);
     const userSaved2 = await request(app).post('/users').send(user2);
 
     const response = await request(app).put('/users').send({
       id: userSaved1.body.id,
-      email: userSaved2.body.email,
-      userSaved2,
+      email: user2.email,
+      user2,
     });
 
     expect(response.status).toBe(400);

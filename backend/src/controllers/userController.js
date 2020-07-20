@@ -74,8 +74,6 @@ module.exports = {
 
         return resp.status(200).json(updatedUser);
       }
-
-      throw new Error('Este usuário não existe');
     } catch (e) {
       resp.status(400).json(e.message);
     }
