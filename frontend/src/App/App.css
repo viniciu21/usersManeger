@@ -1,14 +1,13 @@
 @import url('../../node_modules/react-toastify/dist/ReactToastify.css');
 
 :root {
-  --bg-dark: #1A2F3A;
+  --bg-dark: #1a2f3a;
   --logo-height: 100px;
   --header-height: 100px;
   --aside-width: 225px;
   --footer-height: 40px;
 
-  --shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.1),
-    0 2px 23px 0 rgba(0, 0, 0, 0.6);
+  --shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.1), 0 2px 23px 0 rgba(0, 0, 0, 0.6);
 }
 
 * {
@@ -22,9 +21,9 @@
   grid-template-columns: var(--aside-width) 1fr;
   grid-template-rows: var(--header-height) 1fr var(--footer-height);
   grid-template-areas:
-    "logo header"
-    "menu content"
-    "menu footer";
+    'logo header'
+    'menu content'
+    'menu footer';
   height: 100vh;
   background-color: #f5f5f5;
 }
