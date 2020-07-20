@@ -27,6 +27,8 @@
 
 ###### Como instalar :
 
+> Você precisa ter intalado o npm e algum banco de dados relacional, no caso eu usei o postgres.
+
 - Primeiro faça um clone desse repositório com _https://github.com/viniciu21/usersManeger.git_ ou baixe o arquivo zipado.
 
 - Depois vá para a pasta backend e execute o comando _npm i_ ou _yarn_, em seguida, execute o mesmo comando agora na pasta frontend.
