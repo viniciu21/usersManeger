@@ -6,7 +6,7 @@ const truncate = require('../utils/truncade');
 
 describe('User', () => {
   beforeEach(async () => {
-    truncate.truncate(); //to delete the data of models before each test
+    truncate() //to delete the data of models before each test
   });
 
   it('it should be possible to register users', async () => {

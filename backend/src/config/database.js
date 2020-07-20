@@ -7,7 +7,7 @@ module.exports = {
   password: process.env.DB_PASSWORD,
   database: 'usersManege',
   storage: './__tests__/database.sqlite',
-  logging: false,
+  logging: false, //To appear the queries of postgress
   define: {
     timestamps: true,
   },

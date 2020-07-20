@@ -1,5 +1,9 @@
 const User = require('../models/user');
 
+/**
+ * Controllers of users routes 
+ */
+
 module.exports = {
   async searchAll(req, resp) {
     try {
@@ -30,7 +34,7 @@ module.exports = {
         password,
       });
 
-      return resp.json(user);
+      return resp.status(200).json(user);
     } catch (e) {
       resp.status(400).json(e.message);
     }
@@ -46,7 +50,7 @@ module.exports = {
 
       if (!user) throw new Error('Este usuário não existe');
 
-      return resp.json(user);
+      return resp.status(200).json(user);
     } catch (e) {
       return resp.status(400).json(e.message);
     }
