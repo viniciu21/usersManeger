@@ -37,7 +37,7 @@
 
 - Em seguida, vocẽ pode executar os testes integrados do backend do projeto, executando na pasta backend o comando _yarn test_ ou _npm run test_ e você verá os testes e quanto eles cobrem o projeto em seu terminal, podendo ver o código fonte dos testes no diretório tests.
 
-- Ou, se quiser apenas executar o app, execute na pasta backend o comendo _npm run dev_ ou _yarn dev_ e na pasta frontend _npm start_ ou _yarn start_.
+- Ou, se quiser apenas executar o app, execute na pasta backend o comendo _yarn sequelize db:migrate_ ou _npx sequelize db:migrate_ e após isso, _npm run dev_ ou _yarn dev_ e na pasta frontend _npm start_ ou _yarn start_.
 
 - Se tudo estiver correto, seu navegador abrirá na porta local 3000 e você poderá desfrutar do app.
 
