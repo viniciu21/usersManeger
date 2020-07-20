@@ -42,6 +42,8 @@ module.exports = {
 
       const user = await User.findByPk(id);
 
+      console.log(user);
+
       if (!user) throw new Error('Este usuário não existe');
 
       return resp.json(user);

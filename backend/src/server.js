@@ -4,7 +4,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const app = express();
-require('dotenv').config();
+
+require('./bootstrap');
 
 const connection = require('./database/index');
 
@@ -13,4 +14,4 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(routes);
 
-app.listen(3333);
+module.exports = app;

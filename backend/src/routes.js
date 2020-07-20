@@ -5,7 +5,7 @@ const userController = require('./controllers/userController');
 routes.post('/users', userController.storeUser);
 
 routes.get('/users', userController.searchAll);
-routes.get('/users', userController.searchByIndex);
+routes.get('/userIndex', userController.searchByIndex);
 
 routes.put('/users', userController.updateUser);
 
