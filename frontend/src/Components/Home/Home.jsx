@@ -1,7 +1,7 @@
 import React from 'react';
 import Main from '../Main/Main';
 
-function Home(props) {
+function Home() {
   return (
     <Main icon="home" title="inicio" subtitle="Cadrasto de usuário">
       <div className="display-4 text-center">Bem vindo !!</div>

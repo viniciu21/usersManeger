@@ -4,6 +4,15 @@ import Main from '../Main/Main';
 
 import { toast } from 'react-toastify';
 
+/**
+ * All of the app's rules are condensated in this file.
+ * There's the @function getUsers to get data from the backend user,
+ * the @function onSave to save or update data from a new database user,
+ * the @function getUpdatedList to update deleted, added or simply updated users,
+ * the @function renderForm to generate our input HTML and
+ * @function renderTable to generate our table with users' data.
+ */
+
 const headerProps = {
   icon: 'users',
   title: 'Usuários',
@@ -29,7 +38,7 @@ function UserCrud() {
     getUsers();
   }, []);
 
-  const OnSave = async () => {
+  const onSave = async () => {
     const userUpdated = { ...user };
     const method = user.id ? 'put' : 'post';
     try {
@@ -57,6 +66,21 @@ function UserCrud() {
 
   const cancel = () => {
     setUser(initialUser);
+  };
+
+  const load = (user) => {
+    setUser({ ...user });
+  };
+
+  const remove = async (user) => {
+    try {
+      await api.delete('/users', { data: { id: user.id } });
+      const newList = getUpdatedList(user, false);
+      setUsersList(newList);
+      toast.success('Usuário deletado', { autoClose: 1000 });
+    } catch (e) {
+      toast.error(e.response.data);
+    }
   };
 
   const renderForm = () => {
@@ -93,7 +117,7 @@ function UserCrud() {
 
           <div className="col-12 col-md-4">
             <div className="form-group">
-              <label>Password</label>
+              <label>Senha</label>
               <input
                 type="password"
                 className="form-control"
@@ -107,7 +131,7 @@ function UserCrud() {
 
           <div className="col-12">
             <div className="col-12 d-flex justify-content-center ">
-              <button className="btn btn-primary " onClick={(e) => OnSave(e)}>
+              <button className="btn btn-primary " onClick={(e) => onSave(e)}>
                 Salvar
               </button>
 
@@ -122,38 +146,6 @@ function UserCrud() {
         </div>
       </div>
     );
-  };
-
-  const renderTable = () => {
-    return (
-      <table className="table mt-4">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Senha</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>{renderRows()}</tbody>
-      </table>
-    );
-  };
-
-  const load = (user) => {
-    setUser({ ...user });
-  };
-
-  const remove = (user) => {
-    try {
-      const response = api.delete('/users', { data: { id: user.id } });
-      const newList = getUpdatedList(user, false);
-      setUsersList(newList);
-      toast.success('Usuário deletado', { autoClose: 1000 });
-    } catch (e) {
-      toast.error(e.response.data);
-    }
   };
 
   const renderRows = () => {
@@ -178,6 +170,23 @@ function UserCrud() {
         </tr>
       );
     });
+  };
+
+  const renderTable = () => {
+    return (
+      <table className="table mt-4">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Senha</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>{renderRows()}</tbody>
+      </table>
+    );
   };
 
   return (

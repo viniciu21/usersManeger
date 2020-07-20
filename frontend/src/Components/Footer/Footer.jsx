@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
-function Footer(props) {
+function Footer() {
   return (
     <footer className="footer">
       <span>

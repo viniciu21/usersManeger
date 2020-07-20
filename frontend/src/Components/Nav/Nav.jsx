@@ -2,7 +2,7 @@ import React from 'react';
 import './Nav.css';
 import { Link } from 'react-router-dom';
 
-function Nav(props) {
+function Nav() {
   return (
     <aside className="menu-area">
       <nav className="menu">

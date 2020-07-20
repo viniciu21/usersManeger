@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import './Main.css';
 
 function Main(props) {
+  //Used in home component
   return (
     <React.Fragment>
       <Header {...props} />

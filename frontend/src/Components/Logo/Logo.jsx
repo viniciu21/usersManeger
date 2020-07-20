@@ -3,7 +3,7 @@ import React from 'react';
 import logo from '../../Assets/logo4.png';
 import { Link } from 'react-router-dom';
 
-function Logo(props) {
+function Logo() {
   return (
     <aside className="logo">
       <Link to="/" className="logo">
