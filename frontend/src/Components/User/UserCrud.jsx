@@ -17,8 +17,12 @@ function UserCrud() {
   const [user, setUser] = useState(initialUser);
 
   const getUsers = async () => {
-    const response = await api.get('/users');
-    setUsersList(response.data);
+    try {
+      const response = await api.get('/users');
+      setUsersList(response.data);
+    } catch (e) {
+      toast.error(e.response.data);
+    }
   };
 
   useEffect(() => {
@@ -33,7 +37,7 @@ function UserCrud() {
       const newList = getUpdatedList(response.data);
       setUser(initialUser);
       setUsersList(newList);
-      toast.success(`New user ${method} with success`);
+      toast.success(`Novo usuário ${method} com sucesso`);
     } catch (e) {
       toast.error(e.response.data);
     }
@@ -51,7 +55,7 @@ function UserCrud() {
     setUser({ ...userUpdated });
   };
 
-  const cancel = (e) => {
+  const cancel = () => {
     setUser(initialUser);
   };
 
@@ -91,7 +95,7 @@ function UserCrud() {
             <div className="form-group">
               <label>Password</label>
               <input
-                type="text"
+                type="password"
                 className="form-control"
                 name="password"
                 value={user.password}
@@ -144,11 +148,11 @@ function UserCrud() {
   const remove = (user) => {
     try {
       const response = api.delete('/users', { data: { id: user.id } });
-      console.log(response.data);
       const newList = getUpdatedList(user, false);
       setUsersList(newList);
+      toast.success('Usuário deletado', { autoClose: 1000 });
     } catch (e) {
-      console.log(e);
+      toast.error(e.response.data);
     }
   };
 
@@ -178,8 +182,12 @@ function UserCrud() {
 
   return (
     <Main {...headerProps}>
-      {renderForm()}
-      {renderTable()}
+      <h1 className="text-center p-2">Complete os dados e salve seu usuário</h1>
+      <div>
+        {renderForm()}
+        <h3 className="text-center p-4">Todos os usuários</h3>
+        {renderTable()}
+      </div>
     </Main>
   );
 }
